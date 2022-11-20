@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5b9ae889-151d-4edd-909b-e3ad49ec738f" name="Default Changelist" comment="" />
+    <list default="true" id="5b9ae889-151d-4edd-909b-e3ad49ec738f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/Laravel_18_11_2022_17_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Interfaces/Eloquent/ITransformService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Services/Eloquent/TransformService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/PricePredictionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/PricePredictionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Interfaces/PricePrediction/IPricePredictionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Interfaces/PricePrediction/IPricePredictionService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/InterfaceServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/InterfaceServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -9,17 +25,18 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution>
-      <executable />
-    </execution>
+    <execution />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/pricePrediction-master" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration">
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
@@ -133,18 +150,32 @@
     </include_path>
   </component>
   <component name="ProjectId" id="2HdBpRvN2ocAb8oqlQ8lDJlbaer" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/Administrator.FATIHSARIKAYA/Downloads/pricePrediction-master/app/Services/Eloquent",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "application.passwordSafe",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator.FATIHSARIKAYA\Downloads\pricePrediction-master\app\Services\Eloquent" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -152,8 +183,9 @@
       <method v="2" />
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\Administrator.FATIHSARIKAYA\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -165,33 +197,65 @@
       <workItem from="1668605265021" duration="2999000" />
       <workItem from="1668608326025" duration="4540000" />
       <workItem from="1668612910797" duration="6355000" />
-      <workItem from="1668632921385" duration="1887000" />
+      <workItem from="1668632921385" duration="29751000" />
+      <workItem from="1668781480544" duration="10631000" />
+      <workItem from="1668849662753" duration="599000" />
+      <workItem from="1668935346492" duration="7425000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="492" y="259" width="352" height="320" key="DBNavigator.ConnectionAuthenticationDialog" timestamp="1668613093529">
-      <screen x="0" y="0" width="1280" height="760" />
-    </state>
-    <state x="492" y="259" width="352" height="320" key="DBNavigator.ConnectionAuthenticationDialog/0.0.1280.760@0.0.1280.760" timestamp="1668613093529" />
-    <state x="171" y="35" key="DBNavigator.ProjectSettingsDialog" timestamp="1668614170883">
-      <screen x="0" y="0" width="1280" height="760" />
-    </state>
-    <state x="171" y="35" key="DBNavigator.ProjectSettingsDialog/0.0.1280.760@0.0.1280.760" timestamp="1668614170883" />
-    <state x="221" y="123" key="IDE.errors.dialog" timestamp="1668612950894">
-      <screen x="0" y="0" width="1280" height="760" />
-    </state>
-    <state x="221" y="123" key="IDE.errors.dialog/0.0.1280.760@0.0.1280.760" timestamp="1668612950894" />
-    <state x="154" y="37" width="994" height="706" key="SettingsEditor" timestamp="1668612873207">
-      <screen x="0" y="0" width="1280" height="760" />
-    </state>
-    <state x="154" y="37" width="994" height="706" key="SettingsEditor/0.0.1280.760@0.0.1280.760" timestamp="1668612873207" />
-    <state x="312" y="91" width="672" height="678" key="search.everywhere.popup" timestamp="1668625676741">
-      <screen x="0" y="0" width="1280" height="760" />
-    </state>
-    <state x="312" y="91" width="672" height="678" key="search.everywhere.popup/0.0.1280.760@0.0.1280.760" timestamp="1668625676741" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
+          <line>117</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
+          <line>118</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
+          <line>119</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
+          <line>120</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
+          <line>124</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
+          <line>125</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
+          <line>75</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
+          <line>76</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
+          <line>80</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
