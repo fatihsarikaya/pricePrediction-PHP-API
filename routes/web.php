@@ -39,21 +39,21 @@ Route::get('/', function () {
 //
 //    foreach ($myBrands as $myBrand) {
 //        $lowerBrands = ucfirst(strtolower($myBrand->name));
-//        //$mobile_brands = $mobileDeBrands->where('brand', $myBrand->name)->first();
-//        $mobile_brands = $mobileDeBrands->where('brand', $lowerBrands)->first();
+//        //$mobilede_brands = $mobileDeBrands->where('brand', $myBrand->name)->first();
+//        $mobilede_brands = $mobileDeBrands->where('brand', $lowerBrands)->first();
 //        //$autoscout_brands = $autoscoutBrands->where('brand', str_replace(' ', '-', $myBrand->name))->first();
 //        $autoscout_brands = $autoscoutBrands->where('brand', str_replace(' ', '-', $lowerBrands))->first();
-//        if ($mobile_brands) {
+//        if ($mobilede_brands) {
 //            $check = \App\Models\Eloquent\Transform::where('relation_type', 'brand')
 //                ->where('relation_id', $myBrand->id)
 //                ->where('target_system', 'mobilede')
-//                ->where('target_value', $mobile_brands->brand_id)->first();
+//                ->where('target_value', $mobilede_brands->brand_id)->first();
 //            if (!$check) {
 //                $newTransform = new \App\Models\Eloquent\Transform;
 //                $newTransform->relation_type = 'brand';
 //                $newTransform->relation_id = $myBrand->id;
 //                $newTransform->target_system = 'mobilede';
-//                $newTransform->target_value = $mobile_brands->brand_id;
+//                $newTransform->target_value = $mobilede_brands->brand_id;
 //                $newTransform->save();
 //            }
 //        }
@@ -75,5 +75,46 @@ Route::get('/', function () {
 //    }
 //    return 'transfer completed';
     return 'Home';
+
+
+    $mobiledeModels = \App\Models\Eloquent\MobiledeModel::all();
+    $autoscoutModels = \App\Models\Eloquent\AutoscoutModel::all();
+    $myModels = \App\Models\Eloquent\CarBrandModel::all(); // $myModels -> (db=price_prediction table=car_brand_models)
+
+    foreach ($myModels as $myModel) {
+        $mobilede_models = $mobiledeModels->where('model', $myModel->name)->first();
+        $autoscout_brands = $autoscoutModels->where('model', str_replace(' ', '-', $myModel->name))->first();
+        if ($mobilede_models) {
+            $check = \App\Models\Eloquent\Transform::where('relation_type', 'model')
+                ->where('relation_id', $myModel->id)
+                ->where('target_system', 'mobilede')
+                ->where('target_value', $mobilede_models->brand_id)->first();
+            if (!$check) {
+                $newTransform = new \App\Models\Eloquent\Transform;
+                $newTransform->relation_type = 'model';
+                $newTransform->relation_id = $myModel->id;
+                $newTransform->target_system = 'mobilede';
+                $newTransform->target_value = $mobilede_models->model_id; //
+                $newTransform->save();
+            }
+        }
+
+        if ($autoscout_models) {
+            $check = \App\Models\Eloquent\Transform::where('relation_type', 'model')
+                ->where('relation_id', $myModel->id)
+                ->where('target_system', 'autoscout')
+                ->where('target_value', $autoscout_models->brand)->first();
+            if (!$check) {
+                $newTransform = new \App\Models\Eloquent\Transform;
+                $newTransform->relation_type = 'brand';
+                $newTransform->relation_id = $myModel->id;
+                $newTransform->target_system = 'autoscout';
+                $newTransform->target_value = $autoscout_models->model;
+                $newTransform->save();
+            }
+        }
+    }
+    return 'transfer completed';
+
 
 });

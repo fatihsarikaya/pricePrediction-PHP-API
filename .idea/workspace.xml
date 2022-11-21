@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b9ae889-151d-4edd-909b-e3ad49ec738f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Models/Eloquent/AutoscoutBrand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Eloquent/MobiledeBrand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Eloquent/AutoscoutModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Models/Eloquent/MobiledeModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Eloquent/CarBrand.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Eloquent/CarBrand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Eloquent/CarBrandModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Eloquent/CarBrandModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Eloquent/TransformService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Eloquent/TransformService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_11_16_115752_create_car_brands_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_11_16_115752_create_car_brands_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2022_11_16_120145_create_car_brand_models_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2022_11_16_120145_create_car_brand_models_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -198,7 +191,7 @@
       <workItem from="1668781480544" duration="10631000" />
       <workItem from="1668849662753" duration="599000" />
       <workItem from="1668935346492" duration="8614000" />
-      <workItem from="1669016309655" duration="14002000" />
+      <workItem from="1669016309655" duration="17331000" />
     </task>
     <servers />
   </component>
