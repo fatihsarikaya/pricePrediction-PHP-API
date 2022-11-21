@@ -109,7 +109,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"brand\": 15,\r\n    \"model\": 171,\r\n    \"yearFrom\": \"2000\",\r\n    \"yearTo\": \"2022\",\r\n    \"kilometerFrom\":\"2500\",\r\n    \"kilometerTo\": \"200000\",\r\n    \"powerFrom\": \"50\",\r\n    \"powerTo\": \"500\",\r\n    \"bodyType\":\"Limousine\",\r\n    \"doors\":\"FOUR_OR_FIVE\",\r\n    \"fuelTypes\": [\"PETROL\"],\r\n    \"gearBoxes\": [\"AUTOMATIC_GEAR\"]\r\n    \r\n\r\n}",
+					"raw": "{\r\n    \"brand\": 1,\r\n    \"model\": 1,\r\n    \"yearFrom\": 2000,\r\n    \"yearTo\": 2022,\r\n    \"kilometerFrom\":2500,\r\n    \"kilometerTo\": 200000,\r\n    \"powerFrom\": 50,\r\n    \"powerTo\": 500,\r\n    \"bodyType\":1,\r\n    \"doors\":4,\r\n    \"fuelTypes\": [2],\r\n    \"gearBoxes\": [1]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
