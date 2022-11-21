@@ -15,8 +15,8 @@ return new class extends Migration {
         Schema::create('car_brands', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->timestamps();
-            $table->softDeletes();
+            //$table->timestamps();
+            //$table->softDeletes();
         });
     }
 

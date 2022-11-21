@@ -60,6 +60,14 @@ class PricePredictionService extends BasePricePredictionService implements IPric
         $endpoint = $this->mobileDeUrl;
         $priceList = [];
 
+        //$car = collect();
+        //$response = $client->post('',[
+        //    'query' => [
+        //    'kilometerFrom' => $car->km - 5000,
+        //    'kilometerTo' => $car->km + 5000,
+        //    ]
+        //]);
+
         $targetBrand = $this->transformService->getTargetValue('brand', $brand, 'mobilede')->getData();
         $targetModel = $this->transformService->getTargetValue('model', $model, 'mobilede')->getData();
         $targetFuelTypes = collect($fuelTypes)->map(function ($fuelType) {

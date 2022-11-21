@@ -16,8 +16,8 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('car_brand_id');
             $table->string('name');
-            $table->timestamps();
-            $table->softDeletes();
+            //$table->timestamps();
+            //$table->softDeletes();
         });
     }
 
