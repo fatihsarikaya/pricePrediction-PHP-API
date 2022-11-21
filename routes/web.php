@@ -74,7 +74,7 @@ Route::get('/', function () {
 //        }
 //    }
 //    return 'transfer completed';
-    return 'Home';
+//    return 'Home';
 
 
     $mobiledeModels = \App\Models\Eloquent\MobiledeModel::all();
@@ -83,7 +83,7 @@ Route::get('/', function () {
 
     foreach ($myModels as $myModel) {
         $mobilede_models = $mobiledeModels->where('model', $myModel->name)->first();
-        $autoscout_brands = $autoscoutModels->where('model', str_replace(' ', '-', $myModel->name))->first();
+        $autoscout_models = $autoscoutModels->where('model', str_replace(' ', '-', $myModel->name))->first();
         if ($mobilede_models) {
             $check = \App\Models\Eloquent\Transform::where('relation_type', 'model')
                 ->where('relation_id', $myModel->id)
