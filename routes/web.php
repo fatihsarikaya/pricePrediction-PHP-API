@@ -88,7 +88,7 @@ Route::get('/', function () {
             $check = \App\Models\Eloquent\Transform::where('relation_type', 'model')
                 ->where('relation_id', $myModel->id)
                 ->where('target_system', 'mobilede')
-                ->where('target_value', $mobilede_models->brand_id)->first();
+                ->where('target_value', $mobilede_models->model_id)->first();
             if (!$check) {
                 $newTransform = new \App\Models\Eloquent\Transform;
                 $newTransform->relation_type = 'model';
@@ -103,7 +103,7 @@ Route::get('/', function () {
             $check = \App\Models\Eloquent\Transform::where('relation_type', 'model')
                 ->where('relation_id', $myModel->id)
                 ->where('target_system', 'autoscout')
-                ->where('target_value', $autoscout_models->brand)->first();
+                ->where('target_value', $autoscout_models->model)->first();
             if (!$check) {
                 $newTransform = new \App\Models\Eloquent\Transform;
                 $newTransform->relation_type = 'model';
