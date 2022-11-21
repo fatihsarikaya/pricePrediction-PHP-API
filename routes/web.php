@@ -94,7 +94,7 @@ Route::get('/', function () {
                 $newTransform->relation_type = 'model';
                 $newTransform->relation_id = $myModel->id;
                 $newTransform->target_system = 'mobilede';
-                $newTransform->target_value = $mobilede_models->model_id; //
+                $newTransform->target_value = $mobilede_models->model_id;
                 $newTransform->save();
             }
         }
@@ -106,7 +106,7 @@ Route::get('/', function () {
                 ->where('target_value', $autoscout_models->brand)->first();
             if (!$check) {
                 $newTransform = new \App\Models\Eloquent\Transform;
-                $newTransform->relation_type = 'brand';
+                $newTransform->relation_type = 'model';
                 $newTransform->relation_id = $myModel->id;
                 $newTransform->target_system = 'autoscout';
                 $newTransform->target_value = $autoscout_models->model;
