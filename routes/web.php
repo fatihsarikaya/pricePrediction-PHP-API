@@ -82,8 +82,8 @@ Route::get('/', function () {
     $myModels = \App\Models\Eloquent\CarBrandModel::all(); // $myModels -> (db=price_prediction table=car_brand_models)
 
     foreach ($myModels as $myModel) {
-        $mobilede_models = $mobiledeModels->where('model', $myModel->name)->first();
-        $autoscout_models = $autoscoutModels->where('model', str_replace(' ', '-', $myModel->name))->first();
+        $mobilede_models = $mobiledeModels->where('model', $myModel->name)->first(); // (table=car_brand_models, column=name) (124 Spider,500,500C...)
+        $autoscout_models = $autoscoutModels->where('model', str_replace(' ', '-', $myModel->name))->first(); // (table=car_brand_models, column=name) (124-Spider,500,500C...)
         if ($mobilede_models) {
             $check = \App\Models\Eloquent\Transform::where('relation_type', 'model')
                 ->where('relation_id', $myModel->id)
@@ -92,9 +92,9 @@ Route::get('/', function () {
             if (!$check) {
                 $newTransform = new \App\Models\Eloquent\Transform;
                 $newTransform->relation_type = 'model';
-                $newTransform->relation_id = $myModel->id;
+                $newTransform->relation_id = $myModel->id; // ($myModel->id = table=car_brand_models, column=id) (id=1,2,3,4...)
                 $newTransform->target_system = 'mobilede';
-                $newTransform->target_value = $mobilede_models->model_id;
+                $newTransform->target_value = $mobilede_models->model_id; // (table=car_brand_models, column=model_id) (10,2,3,6...)
                 $newTransform->save();
             }
         }
