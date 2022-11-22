@@ -76,7 +76,7 @@ Route::get('/', function () {
 //    return 'transfer completed';
 //    return 'Home';
 
-
+    set_time_limit(3600);
     $mobiledeModels = \App\Models\Eloquent\MobiledeModel::all();
     $autoscoutModels = \App\Models\Eloquent\AutoscoutModel::all();
     $myModels = \App\Models\Eloquent\CarBrandModel::all(); // $myModels -> (db=price_prediction table=car_brand_models)
@@ -99,20 +99,20 @@ Route::get('/', function () {
             }
         }
 
-        if ($autoscout_models) {
-            $check = \App\Models\Eloquent\Transform::where('relation_type', 'model')
-                ->where('relation_id', $myModel->id)
-                ->where('target_system', 'autoscout')
-                ->where('target_value', $autoscout_models->model)->first();
-            if (!$check) {
-                $newTransform = new \App\Models\Eloquent\Transform;
-                $newTransform->relation_type = 'model';
-                $newTransform->relation_id = $myModel->id;
-                $newTransform->target_system = 'autoscout';
-                $newTransform->target_value = $autoscout_models->model;
-                $newTransform->save();
-            }
-        }
+       //if ($autoscout_models) {
+       //    $check = \App\Models\Eloquent\Transform::where('relation_type', 'model')
+       //        ->where('relation_id', $myModel->id)
+       //        ->where('target_system', 'autoscout')
+       //        ->where('target_value', $autoscout_models->model)->first();
+       //    if (!$check) {
+       //        $newTransform = new \App\Models\Eloquent\Transform;
+       //        $newTransform->relation_type = 'model';
+       //        $newTransform->relation_id = $myModel->id;
+       //        $newTransform->target_system = 'autoscout';
+       //        $newTransform->target_value = $autoscout_models->model;
+       //        $newTransform->save();
+       //    }
+       //}
     }
     return 'transfer completed';
 
