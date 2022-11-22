@@ -23,6 +23,8 @@ class MobileDeService extends BaseMobileDeService implements IMobileDeService
      * @param mixed $gearBoxes
      * @param mixed $powerFrom
      * @param mixed $powerTo
+     * @param mixed $bodyType
+     * @param mixed $doors
      *
      * @return ServiceResponse
      */
@@ -36,7 +38,9 @@ class MobileDeService extends BaseMobileDeService implements IMobileDeService
         $fuelTypes,
         $gearBoxes,
         $powerFrom,
-        $powerTo
+        $powerTo,
+        $bodyType,
+        $doors
     ): ServiceResponse
     {
         $endpoint = $this->searchUrl;
@@ -52,6 +56,7 @@ class MobileDeService extends BaseMobileDeService implements IMobileDeService
                 'tr' => implode(' ', $gearBoxes),
                 'powertype' => 'kw',
                 'pw' => $powerFrom . ':' . $powerTo,
+                'c' => $bodyType,
                 'cn' => 'DE',
                 'isSearchRequest' => 'true',
                 'page' => $pageCounter

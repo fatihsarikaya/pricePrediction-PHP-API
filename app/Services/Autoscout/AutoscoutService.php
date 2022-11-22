@@ -18,6 +18,8 @@ class AutoscoutService extends BaseAutoscoutService implements IPricePredictionS
      * @param mixed $gearBoxes
      * @param mixed $powerFrom
      * @param mixed $powerTo
+     * @param mixed $bodyType
+     * @param mixed $doors
      *
      * @return ServiceResponse
      */
@@ -31,7 +33,9 @@ class AutoscoutService extends BaseAutoscoutService implements IPricePredictionS
         $fuelTypes,
         $gearBoxes,
         $powerFrom,
-        $powerTo
+        $powerTo,
+        $bodyType,
+        $doors
     ): ServiceResponse
     {
         $endpoint = $this->baseUrl . '/' . $brand . '/' . $model;
@@ -48,6 +52,7 @@ class AutoscoutService extends BaseAutoscoutService implements IPricePredictionS
                 'powertype' => 'kw',
                 'powerfrom' => $powerFrom,
                 'powerto' => $powerTo,
+                'body' => $bodyType,
                 'page' => $pageCounter,
             ];
 
