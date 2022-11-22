@@ -82,7 +82,7 @@ Route::get('/', function () {
     $myModels = \App\Models\Eloquent\CarBrandModel::all(); // $myModels -> (db=price_prediction table=car_brand_models)
 
     foreach ($myModels as $myModel) {
-        $mobilede_models = $mobiledeModels->where('model', $myModel->name)->first(); // (table=car_brand_models, column=name) (124 Spider,500,500C...)
+        $mobilede_models = $mobiledeModels->where('model', str_replace(' ', '-', $myModel->name))->first(); // (table=car_brand_models, column=name) (124 Spider,500,500C...)
         $autoscout_models = $autoscoutModels->where('model', str_replace(' ', '-', $myModel->name))->first(); // (table=car_brand_models, column=name) (124-Spider,500,500C...)
         if ($mobilede_models) {
             $check = \App\Models\Eloquent\Transform::where('relation_type', 'model')
