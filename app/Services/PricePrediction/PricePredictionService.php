@@ -115,7 +115,7 @@ class PricePredictionService extends BasePricePredictionService implements IPric
         $autoScoutLastUrl = '';
         if (count($priceList) < 15) {
             $targetBrand = $this->transformService->getTargetValue('brand', $brand, 'autoscout')->getData();
-            $targetModel = $this->transformService->getTargetValue('model', $brand, 'autoscout')->getData();
+            $targetModel = $this->transformService->getTargetValue('model', $model, 'autoscout')->getData();
             $endpoint = $this->autoScoutUrl . '/' . $targetBrand . '/' . $targetModel;
             $targetFuelTypes = collect($fuelTypes)->map(function ($fuelType) {
                 return $this->transformService->getTargetValue('fuelTypes', $fuelType, 'autoscout')->getData();

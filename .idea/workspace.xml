@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b9ae889-151d-4edd-909b-e3ad49ec738f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php" afterDir="false" />
     </list>
@@ -192,7 +191,7 @@
       <workItem from="1668935346492" duration="8614000" />
       <workItem from="1669016309655" duration="25609000" />
       <workItem from="1669105629160" duration="126000" />
-      <workItem from="1669105828187" duration="8347000" />
+      <workItem from="1669105828187" duration="10155000" />
     </task>
     <servers />
   </component>
@@ -261,6 +260,11 @@
           <url>file://$PROJECT_DIR$/app/Services/Autoscout/AutoscoutService.php</url>
           <line>54</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
+          <line>117</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
