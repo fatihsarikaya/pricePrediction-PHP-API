@@ -63,8 +63,12 @@ class PricePredictionService extends BasePricePredictionService implements IPric
         //$car = collect();
         //$response = $client->post('',[
         //    'query' => [
+        //    'yearFrom' => $car->registration_date - 2, (registration_date='2015-01-01')
+        //    'yearTo' => $car->registration_date + 2, (sadece yil alinacak)
         //    'kilometerFrom' => $car->km - 5000,
         //    'kilometerTo' => $car->km + 5000,
+        //    'powerFrom' => $car->kiloWatt - 40, (PS -> kW a cevirilip getirilecek)
+        //    'powerTo' => $car->kiloWatt + 40,
         //    ]
         //]);
 

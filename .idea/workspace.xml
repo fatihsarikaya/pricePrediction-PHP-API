@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b9ae889-151d-4edd-909b-e3ad49ec738f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Autoscout/AutoscoutService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Autoscout/AutoscoutService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/MobileDe/MobileDeService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/MobileDe/MobileDeService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/price_prediction.sql" beforeDir="false" afterPath="$PROJECT_DIR$/price_prediction.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +192,7 @@
       <workItem from="1668935346492" duration="8614000" />
       <workItem from="1669016309655" duration="25609000" />
       <workItem from="1669105629160" duration="126000" />
-      <workItem from="1669105828187" duration="6005000" />
+      <workItem from="1669105828187" duration="8347000" />
     </task>
     <servers />
   </component>
@@ -210,47 +209,47 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
-          <line>125</line>
+          <line>129</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
-          <line>126</line>
+          <line>130</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
-          <line>127</line>
+          <line>131</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
-          <line>128</line>
+          <line>132</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
-          <line>132</line>
+          <line>136</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
-          <line>133</line>
+          <line>137</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
-          <line>83</line>
+          <line>87</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
-          <line>84</line>
+          <line>88</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/app/Services/PricePrediction/PricePredictionService.php</url>
-          <line>88</line>
+          <line>92</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
