@@ -7,7 +7,9 @@ use App\Interfaces\Eloquent\ITransformService;
 use App\Interfaces\PricePrediction\IPricePredictionService;
 use App\Models\Eloquent\Transform;
 use Facebook\WebDriver\Chrome\ChromeDriver;
-use Facebook\WebDriver\Firefox\FirefoxDriver;
+use Facebook\WebDriver\Chrome\ChromeOptions;
+use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Facebook\WebDriver\Remote\RemoteWebDriver;
 
 class PricePredictionService extends BasePricePredictionService implements IPricePredictionService
 {
@@ -56,7 +58,7 @@ class PricePredictionService extends BasePricePredictionService implements IPric
         $doors
     ): ServiceResponse
     {
-        putenv('WEBDRIVER_CHROME_DRIVER=' . base_path('chromedriver.exe'));
+        putenv('WEBDRIVER_CHROME_DRIVER=' . base_path('chromedriver'));
         set_time_limit(3600);
         $endpoint = $this->mobileDeUrl;
         $priceList = [];
@@ -100,11 +102,21 @@ class PricePredictionService extends BasePricePredictionService implements IPric
             'page' => 1
         ];
 
+        //$mobileDeLastUrl = $endpoint . '?' . http_build_query($parameters) . ($targetDoors && $targetDoors != '' ? '&' . $targetDoors : '');
+        //$chromeOptions = new ChromeOptions();
+        //$chromeOptions->addArguments(['--headless', '--disable-gpu', '--window-size=1920,1080', '--no-sandbox', '--disable-dev-shm-usage']);
+        //$capabilities = DesiredCapabilities::chrome();
+        //$capabilities->setCapability(ChromeOptions::CAPABILITY_W3C, $chromeOptions);
+        //$chromeDriver = ChromeDriver::start($capabilities);
+        //$chromeDriver->get($mobileDeLastUrl);
+        //$sources = $chromeDriver->getPageSource();
+
         $chromeDriver = ChromeDriver::start();
         $chromeDriver->manage()->window()->minimize();
         $mobileDeLastUrl = $endpoint . '?' . http_build_query($parameters) . ($targetDoors && $targetDoors != '' ? '&' . $targetDoors : '');
         $chromeDriver->get($mobileDeLastUrl);
         $sources = $chromeDriver->getPageSource();
+
 
         preg_match_all('~<span class=\"h3 u-block\">(.*?)&nbsp;€</span>~', $sources, $prices);
 
@@ -113,7 +125,6 @@ class PricePredictionService extends BasePricePredictionService implements IPric
         }
 
         $chromeDriver->quit();
-        //$FirefoxDriver->quit();
         $autoScoutLastUrl = '';
         if (count($priceList) < 15) {
             $targetBrand = $this->transformService->getTargetValue('brand', $brand, 'autoscout')->getData();
