@@ -7,7 +7,9 @@ use App\Interfaces\Eloquent\ITransformService;
 use App\Interfaces\PricePrediction\IPricePredictionService;
 use App\Models\Eloquent\Transform;
 use Facebook\WebDriver\Chrome\ChromeDriver;
-use Facebook\WebDriver\Firefox\FirefoxDriver;
+use Facebook\WebDriver\Chrome\ChromeOptions;
+use Facebook\WebDriver\Remote\DesiredCapabilities;
+use Facebook\WebDriver\Remote\RemoteWebDriver;
 
 class PricePredictionService extends BasePricePredictionService implements IPricePredictionService
 {
@@ -100,9 +102,17 @@ class PricePredictionService extends BasePricePredictionService implements IPric
             'page' => 1
         ];
 
-        $chromeDriver = ChromeDriver::start();
-        $chromeDriver->manage()->window()->minimize();
+        //$chromeDriver = ChromeDriver::start();
+        //$chromeDriver->manage()->window()->minimize();
+        //$mobileDeLastUrl = $endpoint . '?' . http_build_query($parameters) . ($targetDoors && $targetDoors != '' ? '&' . $targetDoors : '');
+        //$chromeDriver->get($mobileDeLastUrl);
+        //$sources = $chromeDriver->getPageSource();
         $mobileDeLastUrl = $endpoint . '?' . http_build_query($parameters) . ($targetDoors && $targetDoors != '' ? '&' . $targetDoors : '');
+        $chromeOptions = new ChromeOptions();
+        $chromeOptions->addArguments(['--headless', '--disable-gpu', '--window-size=1920,1080', '--no-sandbox', '--disable-dev-shm-usage']);
+        $capabilities = DesiredCapabilities::chrome();
+        $capabilities->setCapability(ChromeOptions::CAPABILITY_W3C, $chromeOptions);
+        $chromeDriver = ChromeDriver::start($capabilities);
         $chromeDriver->get($mobileDeLastUrl);
         $sources = $chromeDriver->getPageSource();
 
@@ -183,10 +193,12 @@ class PricePredictionService extends BasePricePredictionService implements IPric
             true,
             'Price prediction is successful.',
             200,
+
             [
                 'mobileDeResultsUrl' => $mobileDeLastUrl,
                 'autoscoutResultsUrl' => $autoScoutLastUrl,
-                'avarage' => intval($averagePrice)
+                'avarage' => intval($averagePrice),
+                'priceList' => $priceList
             ]
         );
     }
