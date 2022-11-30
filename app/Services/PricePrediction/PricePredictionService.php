@@ -96,25 +96,29 @@ class PricePredictionService extends BasePricePredictionService implements IPric
             'pw' => $powerFrom . ':' . $powerTo,
             'c' => $targetBodyType,
             'cn' => 'DE',
-            'sortOption.sortBy' => 'searchNetGrossPrice',
-            'sortOption.sortOrder' => 'ASCENDING',
+            'sortOption.sortBy' => 'specifics.mileage',
+            'sortOption.sortOrder' => 'DESCENDING',
+            //'sortOption.sortBy' => 'searchNetGrossPrice',
+            //'sortOption.sortOrder' => 'ASCENDING',
             'isSearchRequest' => 'true',
             'page' => 1
         ];
 
-        //$chromeDriver = ChromeDriver::start();
-        //$chromeDriver->manage()->window()->minimize();
-        //$mobileDeLastUrl = $endpoint . '?' . http_build_query($parameters) . ($targetDoors && $targetDoors != '' ? '&' . $targetDoors : '');
-        //$chromeDriver->get($mobileDeLastUrl);
-        //$sources = $chromeDriver->getPageSource();
-        $mobileDeLastUrl = $endpoint . '?' . http_build_query($parameters) . ($targetDoors && $targetDoors != '' ? '&' . $targetDoors : '');
-        $chromeOptions = new ChromeOptions();
-        $chromeOptions->addArguments(['--headless', '--disable-gpu', '--window-size=1920,1080', '--no-sandbox', '--disable-dev-shm-usage']);
-        $capabilities = DesiredCapabilities::chrome();
-        $capabilities->setCapability(ChromeOptions::CAPABILITY_W3C, $chromeOptions);
-        $chromeDriver = ChromeDriver::start($capabilities);
-        $chromeDriver->get($mobileDeLastUrl);
-        $sources = $chromeDriver->getPageSource();
+//       $chromeDriver = ChromeDriver::start();
+//       $chromeDriver->manage()->window()->minimize();
+//       $mobileDeLastUrl = $endpoint . '?' . http_build_query($parameters) . ($targetDoors && $targetDoors != '' ? '&' . $targetDoors : '');
+//       $chromeDriver->get($mobileDeLastUrl);
+//       $sources = $chromeDriver->getPageSource();
+       $mobileDeLastUrl = $endpoint . '?' . http_build_query($parameters) . ($targetDoors && $targetDoors != '' ? '&' . $targetDoors : '');
+       $chromeOptions = new ChromeOptions();
+       //$chromeOptions->addArguments(['--headless', '--disable-gpu', '--window-size=1920,1080', '--no-sandbox', '--disable-dev-shm-usage']);
+       $chromeOptions->addArguments([                '--disable-gpu','--window-size=1920,1080', '--no-sandbox', '--disable-dev-shm-usage']);
+       $capabilities = DesiredCapabilities::chrome();
+       $capabilities->setCapability(ChromeOptions::CAPABILITY_W3C, $chromeOptions);
+
+       $chromeDriver = ChromeDriver::start($capabilities);
+       $chromeDriver->get($mobileDeLastUrl);
+       $sources = $chromeDriver->getPageSource();
 
         preg_match_all('~<span class=\"h3 u-block\">(.*?)&nbsp;€</span>~', $sources, $prices);
 
@@ -123,7 +127,6 @@ class PricePredictionService extends BasePricePredictionService implements IPric
         }
 
         $chromeDriver->quit();
-        //$FirefoxDriver->quit();
         $autoScoutLastUrl = '';
         if (count($priceList) < 15) {
             $targetBrand = $this->transformService->getTargetValue('brand', $brand, 'autoscout')->getData();
@@ -149,8 +152,10 @@ class PricePredictionService extends BasePricePredictionService implements IPric
                 'powerfrom' => $powerFrom,
                 'powerto' => $powerTo,
                 'body' => $targetBodyType,
-                'sort' => 'price',
-                'desc' => "0",
+                'sort' => 'mileage',
+                'desc' => '1',
+                //'sort' => 'price',
+                //'desc' => "0",
                 'cy' => "D",
                 'page' => 1,
             ];
