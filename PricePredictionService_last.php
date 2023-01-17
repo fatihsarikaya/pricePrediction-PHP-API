@@ -188,7 +188,7 @@ class PricePredictionService extends BasePricePredictionService implements IPric
         $chromeDriver->get($mobileDeLastUrl);
         $sources = $chromeDriver->getPageSource();
 
-        Log::channel('laravel.log')->info(json_encode($sources));
+        //Log::channel('laravel.log')->info(json_encode($sources));
 
 
         preg_match_all('~<span class=\"h3 u-block\">(.*?)&nbsp;€</span>~', $sources, $prices);
