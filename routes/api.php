@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 //Route::middleware([
 //    'auth:user_api'
 //])->group(function () {
-    Route::post('login', [\App\Http\Controllers\Api\UserController::class, 'login'])->withoutMiddleware('auth:user_api');
+//    Route::post('login', [\App\Http\Controllers\Api\UserController::class, 'login'])->withoutMiddleware('auth:user_api');
 
     Route::prefix('carBrand')->group(function () {
         Route::get('getAll', [\App\Http\Controllers\Api\CarBrandController::class, 'getAll']);
