@@ -10,6 +10,7 @@ use Facebook\WebDriver\Chrome\ChromeDriver;
 use Facebook\WebDriver\Chrome\ChromeOptions;
 use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Facebook\WebDriver\Remote\RemoteWebDriver;
+use Illuminate\Support\Facades\Log;
 
 class PricePredictionService extends BasePricePredictionService implements IPricePredictionService
 {
@@ -59,6 +60,7 @@ class PricePredictionService extends BasePricePredictionService implements IPric
     ): ServiceResponse
     {
         putenv('WEBDRIVER_CHROME_DRIVER=' . base_path('chromedriver.exe'));
+        // putenv('WEBDRIVER_CHROME_DRIVER=/var/www/html/chromedriver');
         set_time_limit(3600);
         $endpoint = $this->mobileDeUrl;
         $priceList = [];
@@ -85,7 +87,71 @@ class PricePredictionService extends BasePricePredictionService implements IPric
         })->all();
         $targetBodyType = $this->transformService->getTargetValue('bodyType', $bodyType, 'mobilede')->getData();
         $targetDoors = $this->transformService->getTargetValue('doors', $doors, 'mobilede')->getData();
+        
+        function roundFrom($kilometerFrom): int
+        {
+            if ($kilometerFrom == 0) {
+                return $kilometerFrom = 0;
+            } elseif ($kilometerFrom >=0 && $kilometerFrom <=10000) {
+                return $kilometerFrom = 0;
+            } elseif ($kilometerFrom >=10001 && $kilometerFrom <=30000) {
+                return $kilometerFrom = 10000;
+            } elseif ($kilometerFrom >=30001 && $kilometerFrom <=50000) {
+                return $kilometerFrom = 30000;
+            } elseif ($kilometerFrom >=50001 && $kilometerFrom <=70000) {
+                return $kilometerFrom = 50000;
+            } elseif ($kilometerFrom >=70001 && $kilometerFrom <=100000) {
+                return $kilometerFrom = 70000;
+            } elseif ($kilometerFrom >=100001 && $kilometerFrom <=125000) {
+                return $kilometerFrom = 100000;
+            } elseif ($kilometerFrom >=125001 && $kilometerFrom <=150000) {
+                return $kilometerFrom = 125000;
+            } elseif ($kilometerFrom >=150001 && $kilometerFrom <=175000) {
+                return $kilometerFrom = 150000;
+            } elseif ($kilometerFrom >=175001 && $kilometerFrom <=200000) {
+                return $kilometerFrom = 175000;
+            } else { ($kilometerFrom >=200001 && $kilometerFrom <=250000);
+                return $kilometerFrom = 200000;
+            }
+        }
 
+        function roundTo($kilometerTo): int
+        {
+            if ($kilometerTo == 0) {
+                return $kilometerTo = 0;
+            } elseif ($kilometerTo >=0 && $kilometerTo <=10000) {
+                return $kilometerTo = 10000;
+            } elseif ($kilometerTo >=10001 && $kilometerTo <=30000) {
+                return $kilometerTo = 30000;
+            } elseif ($kilometerTo >=30001 && $kilometerTo <=50000) {
+                return $kilometerTo = 50000;
+            } elseif ($kilometerTo >=50001 && $kilometerTo <=70000) {
+                return $kilometerTo = 70000;
+            } elseif ($kilometerTo >=70001 && $kilometerTo <=100000) {
+                return $kilometerTo = 100000;
+            } elseif ($kilometerTo >=100001 && $kilometerTo <=125000) {
+                return $kilometerTo = 125000;
+            } elseif ($kilometerTo >=125001 && $kilometerTo <=150000) {
+                return $kilometerTo = 150000;
+            } elseif ($kilometerTo >=150001 && $kilometerTo <=175000) {
+                return $kilometerTo = 175000;
+            } elseif ($kilometerTo >=175001 && $kilometerTo <=200000) {
+                return $kilometerTo = 200000;
+            } else { ($kilometerTo >=200001 && $kilometerTo <=250000);
+                return $kilometerTo = 250000;
+            }
+        }
+
+        function roundPowerFrom($powerFrom): int
+        {
+            return $powerFrom -= 10;
+        }
+
+        function roundPowerTo($powerTo): int
+        {
+            return $powerTo += 10;
+        }
+        
         $parameters = [
             'ms' => $targetBrand . ';' . $targetModel,
             'ml' => $kilometerFrom . ':' . $kilometerTo,
@@ -101,6 +167,7 @@ class PricePredictionService extends BasePricePredictionService implements IPric
             'sortOption.sortBy' => 'searchNetGrossPrice',
             'sortOption.sortOrder' => 'ASCENDING',
             'isSearchRequest' => 'true',
+            'dam' => '0',
             'page' => 1
         ];
 
@@ -115,6 +182,8 @@ class PricePredictionService extends BasePricePredictionService implements IPric
        //$chromeOptions->addArguments([                '--disable-gpu','--window-size=1920,1080', '--no-sandbox', '--disable-dev-shm-usage']);
        $capabilities = DesiredCapabilities::chrome();
        $capabilities->setCapability(ChromeOptions::CAPABILITY_W3C, $chromeOptions);
+       $capabilities->setCapability('userAgent','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36 OPR/89.0.4447.64');
+       $capabilities->setCapability('user-agent','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36 OPR/89.0.4447.64');
 
        $chromeDriver = ChromeDriver::start($capabilities);
        $chromeDriver->get($mobileDeLastUrl);
@@ -128,7 +197,7 @@ class PricePredictionService extends BasePricePredictionService implements IPric
 
         $chromeDriver->quit();
         $autoScoutLastUrl = '';
-        if (count($priceList) < 15) {
+        if (count($priceList) < 10) {
             $targetBrand = $this->transformService->getTargetValue('brand', $brand, 'autoscout')->getData();
             $targetModel = $this->transformService->getTargetValue('model', $model, 'autoscout')->getData();
             $endpoint = $this->autoScoutUrl . '/' . $targetBrand . '/' . $targetModel;
@@ -140,84 +209,6 @@ class PricePredictionService extends BasePricePredictionService implements IPric
             })->all();
             $targetBodyType = $this->transformService->getTargetValue('bodyType', $bodyType, 'autoscout')->getData();
             $targetDoors = $this->transformService->getTargetValue('doors', $doors, 'autoscout')->getData();
-
-            function roundFrom($kilometerFrom)
-            {
-                if ($kilometerFrom == 0) {
-                    return $kilometerFrom = 0;
-                } elseif ($kilometerFrom >=2500 && $kilometerFrom <=5000) {
-                    return $kilometerFrom = 2500;
-                } elseif ($kilometerFrom >=5000 && $kilometerFrom <=10000) {
-                    return $kilometerFrom = 5000;
-                } elseif ($kilometerFrom >=10000 && $kilometerFrom <=20000) {
-                    return $kilometerFrom = 10000;
-                } elseif ($kilometerFrom >=20000 && $kilometerFrom <=30000) {
-                    return $kilometerFrom = 20000;
-                } elseif ($kilometerFrom >=30000 && $kilometerFrom <=40000) {
-                    return $kilometerFrom = 30000;
-                } elseif ($kilometerFrom >=40000 && $kilometerFrom <=50000) {
-                    return $kilometerFrom = 40000;
-                } elseif ($kilometerFrom >=50000 && $kilometerFrom <=60000) {
-                    return $kilometerFrom = 50000;
-                } elseif ($kilometerFrom >=60000 && $kilometerFrom <=70000) {
-                    return $kilometerFrom = 60000;
-                } elseif ($kilometerFrom >=70000 && $kilometerFrom <=80000) {
-                    return $kilometerFrom = 70000;
-                } elseif ($kilometerFrom >=80000 && $kilometerFrom <=90000) {
-                    return $kilometerFrom = 80000;
-                } elseif ($kilometerFrom >=90000 && $kilometerFrom <=100000) {
-                    return $kilometerFrom = 90000;
-                } elseif ($kilometerFrom >=100000 && $kilometerFrom <=125000) {
-                    return $kilometerFrom = 100000;
-                } elseif ($kilometerFrom >=125000 && $kilometerFrom <=150000) {
-                    return $kilometerFrom = 125000;
-                } elseif ($kilometerFrom >=150000 && $kilometerFrom <=175000) {
-                    return $kilometerFrom = 150000;
-                } elseif ($kilometerFrom >=175000 && $kilometerFrom <=200000) {
-                    return $kilometerFrom = 175000;
-                } else { ($kilometerFrom >=200000 && $kilometerFrom <=250000);
-                    return $kilometerFrom = 200000;
-                }
-            }
-
-            function roundTo($kilometerTo)
-            {
-                if ($kilometerTo == 0) {
-                    return $kilometerTo = 0;
-                } elseif ($kilometerTo >=2500 && $kilometerTo <=5000) {
-                    return $kilometerTo = 5000;
-                } elseif ($kilometerTo >=5000 && $kilometerTo <=10000) {
-                    return $kilometerTo = 10000;
-                } elseif ($kilometerTo >=10000 && $kilometerTo <=20000) {
-                    return $kilometerTo = 20000;
-                } elseif ($kilometerTo >=20000 && $kilometerTo <=30000) {
-                    return $kilometerTo = 30000;
-                } elseif ($kilometerTo >=30000 && $kilometerTo <=40000) {
-                    return $kilometerTo = 40000;
-                } elseif ($kilometerTo >=40000 && $kilometerTo <=50000) {
-                    return $kilometerTo = 50000;
-                } elseif ($kilometerTo >=50000 && $kilometerTo <=60000) {
-                    return $kilometerTo = 60000;
-                } elseif ($kilometerTo >=60000 && $kilometerTo <=70000) {
-                    return $kilometerTo = 70000;
-                } elseif ($kilometerTo >=70000 && $kilometerTo <=80000) {
-                    return $kilometerTo = 80000;
-                } elseif ($kilometerTo >=80000 && $kilometerTo <=90000) {
-                    return $kilometerTo = 90000;
-                } elseif ($kilometerTo >=90000 && $kilometerTo <=100000) {
-                    return $kilometerTo = 100000;
-                } elseif ($kilometerTo >=100000 && $kilometerTo <=125000) {
-                    return $kilometerTo = 125000;
-                } elseif ($kilometerTo >=125000 && $kilometerTo <=150000) {
-                    return $kilometerTo = 150000;
-                } elseif ($kilometerTo >=150000 && $kilometerTo <=175000) {
-                    return $kilometerTo = 175000;
-                } elseif ($kilometerTo >=175000 && $kilometerTo <=200000) {
-                    return $kilometerTo = 200000;
-                } else { ($kilometerTo >=200000 && $kilometerTo <=250000);
-                    return $kilometerTo = 250000;
-                }
-            }
 
             $parameters = [
                 'kmfrom' => roundFrom($kilometerFrom),
@@ -265,10 +256,21 @@ class PricePredictionService extends BasePricePredictionService implements IPric
                 }
             }
         }
+        
+        $priceList = array_slice($priceList,1);
+
+        $minimumPrice = "";
+        $maximumPrice = "";
+        $count        = "";
+        //$averagePrice = "";
 
         if (count($priceList) == 0) {
             $averagePrice = "0";
+
         } else {
+            $minimumPrice = $priceList[0];
+            $maximumPrice = end($priceList);
+            $count        = count($priceList);
             $averagePrice = array_sum($priceList) / count($priceList);
         }
 
@@ -276,12 +278,14 @@ class PricePredictionService extends BasePricePredictionService implements IPric
             true,
             'Price prediction is successful.',
             200,
-
             [
                 'mobileDeResultsUrl' => $mobileDeLastUrl,
                 'autoscoutResultsUrl' => $autoScoutLastUrl,
                 'avarage' => intval($averagePrice),
-                'priceList' => $priceList
+                'minimumPrice' => $minimumPrice,
+                'maximumPrice' => $maximumPrice,
+                'priceList' => $priceList,
+                'count' => $count
             ]
         );
     }
