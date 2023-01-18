@@ -195,7 +195,7 @@ class PricePredictionService extends BasePricePredictionService implements IPric
             $priceList[] = (int)str_replace('.', '', $price);
         }
 
-        $chromeDriver->quit();
+        $chromeDriver->close();
         $autoScoutLastUrl = '';
         if (count($priceList) < 10) {
             $targetBrand = $this->transformService->getTargetValue('brand', $brand, 'autoscout')->getData();
