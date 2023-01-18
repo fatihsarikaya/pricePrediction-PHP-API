@@ -284,8 +284,9 @@ class PricePredictionService extends BasePricePredictionService implements IPric
                 'avarage' => intval($averagePrice),
                 'minimumPrice' => $minimumPrice,
                 'maximumPrice' => $maximumPrice,
-                'priceList' => $priceList,
-                'count' => $count
+                'count' => $count,
+                'priceList' => $priceList
+                
             ]
         );
     }
