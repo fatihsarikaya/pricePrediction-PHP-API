@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::middleware([
-    'auth:user_api'
-])->group(function () {
+//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+//
+//Route::middleware([
+//    'auth:user_api'
+//])->group(function () {
     Route::post('login', [\App\Http\Controllers\Api\UserController::class, 'login'])->withoutMiddleware('auth:user_api');
 
     Route::prefix('carBrand')->group(function () {
@@ -35,4 +35,4 @@ Route::middleware([
     Route::prefix('pricePrediction')->group(function () {
         Route::post('check', [\App\Http\Controllers\Api\PricePredictionController::class, 'check']);
     });
-});
+//});
