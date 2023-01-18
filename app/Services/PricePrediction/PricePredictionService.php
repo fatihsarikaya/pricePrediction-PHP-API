@@ -257,7 +257,7 @@ class PricePredictionService extends BasePricePredictionService implements IPric
             }
         }
         
-        $priceList = array_slice($priceList,1);
+        //$priceList = array_slice($priceList,1);
 
         $minimumPrice = "";
         $maximumPrice = "";
